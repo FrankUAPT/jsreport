@@ -1,0 +1,96 @@
+.custom-fields-settings-container {
+  padding: 20px;
+  /* Match UserManagement styling for consistency if desired */
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Softer shadow */
+  margin-top: 20px; /* Spacing from UserManagement if they are on the same page */
+}
+
+.custom-fields-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.custom-fields-header h3 { /* Changed from h2 to h3 for sub-section */
+  margin: 0;
+  font-size: 1.5em; /* Slightly smaller than main settings header */
+  color: #333;
+}
+
+.add-cf-btn {
+  padding: 10px 15px;
+  background-color: #5cb85c; /* Green for "add" */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.add-cf-btn:hover {
+  background-color: #4cae4c;
+}
+
+.cf-definitions-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.cf-definitions-table th,
+.cf-definitions-table td {
+  border: 1px solid #ddd;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.cf-definitions-table th {
+  background-color: #f8f9fa;
+  font-weight: bold;
+  color: #444;
+}
+
+.cf-definitions-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.cf-definitions-table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.cf-actions .edit-btn,
+.cf-actions .delete-btn {
+  padding: 5px 10px; /* Slightly smaller buttons */
+  margin-right: 6px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.85em;
+}
+
+/* Using existing button styles from UserManagement.css for consistency */
+.cf-actions .edit-btn {
+  background-color: #ffc107; /* Yellow */
+  color: #333;
+}
+
+.cf-actions .edit-btn:hover {
+  background-color: #e0a800;
+}
+
+.cf-actions .delete-btn {
+  background-color: #dc3545; /* Red */
+  color: white;
+}
+
+.cf-actions .delete-btn:hover {
+  background-color: #c82333;
+}
+
+/* Modal form styling for custom fields is handled by shared Modal.css */

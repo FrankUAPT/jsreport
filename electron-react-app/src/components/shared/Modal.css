@@ -1,0 +1,206 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Ensure it's on top */
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  min-width: 300px;
+  max-width: 600px;
+  width: 90%; /* Responsive width */
+  z-index: 1001;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.5em;
+}
+
+.modal-close-button {
+  background: none;
+  border: none;
+  font-size: 1.8em;
+  cursor: pointer;
+  color: #888;
+}
+
+.modal-close-button:hover {
+  color: #333;
+}
+
+.modal-body {
+  /* Styles for the content area of the modal */
+  padding-top: 10px;
+}
+
+/* Form specific styles within modal */
+.modal-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.modal-form input[type="text"],
+.modal-form input[type="date"],
+.modal-form select,
+.modal-form textarea {
+  width: calc(100% - 20px); /* Full width minus padding */
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.modal-form textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.modal-form .form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.modal-form .form-actions button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.modal-form .form-actions button.primary {
+  background-color: #007bff;
+  color: white;
+}
+
+.modal-form .form-actions button.primary:hover {
+  background-color: #0056b3;
+}
+
+.modal-form .form-actions button.secondary {
+  background-color: #6c757d;
+  color: white;
+}
+.modal-form .form-actions button.secondary:hover {
+  background-color: #545b62;
+}
+
+/* Styles for dependency items in TaskForm */
+.dependency-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+}
+
+.dependency-item select,
+.dependency-item input.lag-input {
+  flex-grow: 1;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.dependency-item input.lag-input {
+  max-width: 100px; /* For the lag input */
+}
+
+.dependency-item .remove-dependency-btn,
+.add-dependency-btn {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.dependency-item .remove-dependency-btn {
+  background-color: #ff6b6b; /* Light red */
+  color: white;
+}
+.dependency-item .remove-dependency-btn:hover {
+  background-color: #e05252;
+}
+
+.add-dependency-btn {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  margin-top: 10px; /* Space above the add button */
+  display: block; /* Make it full width or inline-block as preferred */
+}
+.add-dependency-btn:hover {
+  background-color: #45a049;
+}
+
+/* Styles for Custom Fields section in TaskForm */
+.custom-fields-form-section {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid #eee;
+}
+
+.custom-fields-form-section h4 {
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.form-field-group {
+  margin-bottom: 15px;
+}
+
+.form-field-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-field-group input[type="text"],
+.form-field-group input[type="number"],
+.form-field-group input[type="date"],
+.form-field-group textarea,
+.form-field-group select {
+  width: calc(100% - 22px); /* Adjusted for padding/border */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-field-group input[type="checkbox"].custom-field-checkbox {
+  width: auto; /* Checkboxes don't need full width */
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.form-field-group textarea {
+  min-height: 70px;
+  resize: vertical;
+}

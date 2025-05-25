@@ -1,0 +1,65 @@
+/* Styles for Frappe Gantt Chart */
+
+/* Container for the Gantt chart */
+.gantt-chart-container {
+  width: 100%;
+  overflow-x: auto; /* Allows horizontal scrolling if content overflows */
+  min-height: 300px; /* Ensure it has some height even if no tasks */
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-top: 20px;
+}
+
+/* Frappe Gantt specific overrides if needed */
+/* For example, to change the default font or colors */
+.gantt .grid-header, .gantt .grid-row {
+  fill: #f5f5f5; /* Light grey background for grid lines area */
+}
+
+.gantt .bar-wrapper.milestone-task .bar {
+  fill: #8D4E85; /* Example: Purple for milestones */
+  stroke: #70366d;
+}
+.gantt .bar-wrapper.milestone-task .bar-progress {
+  fill: #a36aa0;
+}
+
+/* Styling for critical tasks */
+.gantt .bar-wrapper.critical-task .bar {
+  fill: #dc3545; /* Red for critical tasks */
+  stroke: #b02a37;
+}
+.gantt .bar-wrapper.critical-task .bar-progress {
+  fill: #e4606d; 
+}
+/* Ensure critical task label is readable if needed, though Frappe Gantt handles labels separately */
+.gantt .bar-label.critical-task {
+  fill: white !important; /* Example if default label color clashes */
+}
+
+/* Custom popup styling */
+.gantt-popup {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  font-family: sans-serif;
+  font-size: 12px;
+  color: #333;
+}
+.gantt-popup h5 {
+  margin: 0 0 5px 0;
+  font-size: 14px;
+  color: #222;
+}
+.gantt-popup p {
+  margin: 3px 0;
+  line-height: 1.4;
+}
+
+/* Ensure Frappe Gantt SVG elements are responsive if possible, though it manages its own width/height */
+.gantt-chart-container svg.gantt {
+  display: block; /* Helps with layout and sizing */
+  /* width: 100% !important; */ /* Frappe Gantt often sets its own width, this might be overridden */
+}
