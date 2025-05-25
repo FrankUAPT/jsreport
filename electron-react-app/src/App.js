@@ -60,6 +60,21 @@ function App() {
   const [sortOrder, setSortOrder] = useState('asc');   // Default sort order
   
   const [displayedTasks, setDisplayedTasks] = useState([]); // Tasks to show in TaskList
+  // Initialize theme from localStorage or default to 'light'
+  const [theme, setTheme] = useState(() => {
+    const storedTheme = localStorage.getItem('app-theme');
+    return storedTheme || 'light';
+  });
+
+  // --- Theme Management ---
+  const toggleTheme = () => {
+    setTheme(prevTheme => (prevTheme === 'light' ? 'dark' : 'light'));
+  };
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('app-theme', theme); // Save theme to localStorage
+  }, [theme]);
 
   // --- Initial Data Loading & Derived State Update ---
   useEffect(() => {
@@ -495,6 +510,10 @@ function App() {
           )}
           <button onClick={() => { setShowSettingsView(!showSettingsView); setActiveSettingsTab('users'); }} className="settings-btn">
             {showSettingsView ? 'Back to Tasks' : 'Settings'}
+          </button>
+          {/* Add the new Toggle Theme button here */}
+          <button onClick={toggleTheme} className="settings-btn theme-toggle-btn">
+            {theme === 'light' ? 'Switch to Dark Mode' : 'Switch to Light Mode'}
           </button>
           {!showSettingsView && (
             <>

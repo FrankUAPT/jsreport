@@ -1,14 +1,117 @@
 /* Basic App Styling */
+:root {
+  --app-background: #f4f7f6;
+  --main-background: #fff;
+  --header-background: #333;
+  --task-list-view-bg: #f9f9f9; /* Used in App.css and TaskList.css */
+  --gantt-chart-view-bg: #f9f9f9;
+  --button-secondary-bg: #6c757d; /* For general secondary buttons like 'Clear Filters' */
+  --button-secondary-hover-bg: #5a6268;
+
+  --text-color: #333;
+  --header-text-color: white;
+  --button-text-color: white;
+  --link-color: #007bff; /* For general links or link-like buttons */
+  --critical-path-text-color: #212529; /* Dark text for yellow background */
+  --tab-text-color: #007bff;
+  --tab-active-text-color: #333;
+  --tab-active-bg: white;
+  --tab-hover-bg: #f8f9fa; /* Also used in TaskList.css for controls background */
+
+
+  --border-color: #e0e0e0; /* General border color, used in TaskList.css as well */
+  --input-border-color: #ccc; /* Specific for inputs, if different from general border */
+  --tab-border-color: #ddd;
+  --tab-active-border-color: #ddd; /* Can be same as --tab-border-color */
+  --header-shadow-color: rgba(0, 0, 0, 0.1);
+  --settings-shadow-color: rgba(0,0,0,0.05);
+  --modal-shadow-color: rgba(0,0,0,0.2);
+  --section-border-color: #eee; /* For borders like in export section or task list h2 */
+  --modal-overlay-bg: rgba(0, 0, 0, 0.5);
+  --gantt-grid-bg: #f5f5f5;
+  --table-row-hover-bg: #f1f1f1;
+
+  --icon-color: #888;
+  --icon-hover-color: #333;
+
+  --button-primary-bg: #28a745; /* Green, e.g., New Task, CSV Export */
+  --button-primary-hover-bg: #218838;
+  --button-info-bg: #17a2b8; /* Info Blue, e.g., Settings */
+  --button-info-hover-bg: #138496;
+  --button-warning-bg: #ffc107; /* Warning Yellow, e.g., Critical Path */
+  --button-warning-hover-bg: #e0a800;
+  --button-view-mode-bg: #555; /* For view mode buttons like Day, Week, Month */
+  --button-view-mode-hover-bg: #777;
+  --button-json-export-bg: #007bff; /* Primary blue, e.g., JSON Export */
+  --button-json-export-hover-bg: #0056b3;
+  /* --button-csv-export-bg is same as --button-primary-bg */
+  /* --button-csv-export-hover-bg is same as --button-primary-hover-bg */
+  --button-danger-bg: #dc3545;
+  --button-danger-hover-bg: #c82333;
+  /* Assuming primary can be used for success/add buttons if green */
+}
+
+[data-theme='dark'] {
+  --app-background: #121212;
+  --main-background: #1e1e1e;
+  --header-background: #2c2c2c;
+  --task-list-view-bg: #252525;
+  --gantt-chart-view-bg: #252525;
+  --button-secondary-bg: #4a4a4a;
+  --button-secondary-hover-bg: #5a5a5a;
+
+  --text-color: #e0e0e0;
+  --header-text-color: #f5f5f5;
+  --button-text-color: #f5f5f5;
+  --link-color: #1e90ff;
+  --critical-path-text-color: #f5f5f5; /* Ensure contrast on dark yellow */
+  --tab-text-color: #1e90ff;
+  --tab-active-text-color: #f5f5f5;
+  --tab-active-bg: #1e1e1e; /* Same as main background */
+  --tab-hover-bg: #333333;
+
+
+  --border-color: #444;
+  --input-border-color: #555;
+  --tab-border-color: #555;
+  --tab-active-border-color: #555;
+  --header-shadow-color: rgba(255, 255, 255, 0.05);
+  --settings-shadow-color: rgba(255,255,255,0.03);
+  --modal-shadow-color: rgba(255,255,255,0.1);
+  --section-border-color: #333;
+  --modal-overlay-bg: rgba(0, 0, 0, 0.7); /* Slightly darker for dark theme if desired */
+  --gantt-grid-bg: #2a2a2a;
+  --table-row-hover-bg: #383838;
+
+  --icon-color: #aaa;
+  --icon-hover-color: #ddd;
+
+  --button-primary-bg: #3fa053;
+  --button-primary-hover-bg: #357a42;
+  --button-info-bg: #3aa8b5;
+  --button-info-hover-bg: #2f8a96;
+  --button-warning-bg: #e0ac00; /* Darker yellow for better contrast with light text if needed */
+  --button-warning-hover-bg: #c09000;
+  --button-view-mode-bg: #666;
+  --button-view-mode-hover-bg: #888;
+  --button-json-export-bg: #1e90ff;
+  --button-json-export-hover-bg: #0073cc;
+  --button-danger-bg: #e74c3c;
+  --button-danger-hover-bg: #c0392b;
+}
+
+
 .App {
   font-family: sans-serif;
   padding: 20px;
-  background-color: #f4f7f6;
+  background-color: var(--app-background);
+  color: var(--text-color);
   min-height: 100vh;
 }
 
 .App-header {
-  background-color: #333;
-  color: white;
+  background-color: var(--header-background);
+  color: var(--header-text-color);
   padding: 10px 20px;
   text-align: center;
   margin-bottom: 20px;
@@ -16,10 +119,10 @@
 }
 
 .App-main {
-  background-color: #fff;
+  background-color: var(--main-background);
   /* padding: 20px; */ /* Removed padding from App-main to allow grid to manage it */
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px var(--header-shadow-color);
 }
 
 .App-header .app-controls {
@@ -40,29 +143,29 @@
 }
 
 .App-header .new-task-btn {
-  background-color: #28a745; /* Green */
-  color: white;
+  background-color: var(--button-primary-bg);
+  color: var(--button-text-color);
   /* Specific overrides if new-task-btn needs to differ from generic .app-controls button */
 }
 
 .App-header .new-task-btn:hover {
-  background-color: #218838;
+  background-color: var(--button-primary-hover-bg);
 }
 
 .App-header .settings-btn {
-  background-color: #17a2b8; /* Info Blue for settings */
-  color: white;
+  background-color: var(--button-info-bg);
+  color: var(--button-text-color);
 }
 .App-header .settings-btn:hover {
-  background-color: #138496;
+  background-color: var(--button-info-hover-bg);
 }
 
 .App-header .critical-path-btn {
-  background-color: #ffc107; /* Warning Yellow for critical path */
-  color: #212529; /* Dark text for yellow background */
+  background-color: var(--button-warning-bg);
+  color: var(--critical-path-text-color); 
 }
 .App-header .critical-path-btn:hover {
-  background-color: #e0a800;
+  background-color: var(--button-warning-hover-bg);
 }
 
 
@@ -70,19 +173,19 @@
   /* Styles for Day, Week, Month view buttons */
   margin: 0 0 0 5px; /* Only left margin if they are grouped */
   padding: 8px 12px; /* Keep specific padding if needed */
-  background-color: #555;
-  color: white;
+  background-color: var(--button-view-mode-bg);
+  color: var(--button-text-color);
   /* border, border-radius, cursor, font-size are inherited from .app-controls button */
 }
 
 .App-header .view-mode-controls button:hover {
-  background-color: #777;
+  background-color: var(--button-view-mode-hover-bg);
 }
 
 /* Settings Tabs */
 .settings-tabs {
   margin-bottom: 20px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid var(--tab-border-color);
 }
 
 .settings-tabs button {
@@ -93,32 +196,32 @@
   background-color: transparent;
   cursor: pointer;
   font-size: 1em;
-  color: #007bff;
+  color: var(--tab-text-color);
 }
 
 .settings-tabs button.active {
-  border-color: #ddd;
-  border-bottom: 1px solid white; /* To make it look like tab is part of content below */
-  background-color: white;
-  color: #333;
+  border-color: var(--tab-active-border-color);
+  border-bottom: 1px solid var(--tab-active-bg); /* To make it look like tab is part of content below */
+  background-color: var(--tab-active-bg);
+  color: var(--tab-active-text-color);
   font-weight: bold;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
 .settings-tabs button:hover {
-  background-color: #f8f9fa;
+  background-color: var(--tab-hover-bg);
 }
 
 /* Export Controls Section */
 .export-controls-section {
   margin-top: 30px;
   padding-top: 20px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--section-border-color);
 }
 
 .export-controls-section h3 {
   margin-bottom: 15px;
-  color: #333;
+  color: var(--text-color);
 }
 
 .export-btn {
@@ -130,19 +233,19 @@
 }
 
 .json-export-btn {
-  background-color: #007bff; /* Primary blue */
-  color: white;
+  background-color: var(--button-json-export-bg);
+  color: var(--button-text-color);
 }
 .json-export-btn:hover {
-  background-color: #0056b3;
+  background-color: var(--button-json-export-hover-bg);
 }
 
 .csv-export-btn {
-  background-color: #28a745; /* Success green */
-  color: white;
+  background-color: var(--button-primary-bg); /* Using primary button color as it's green */
+  color: var(--button-text-color);
 }
 .csv-export-btn:hover {
-  background-color: #1e7e34;
+  background-color: var(--button-primary-hover-bg);
 }
 
 
@@ -157,9 +260,9 @@
 .task-list-view {
   /* Styles for the task list container if needed */
   padding: 10px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
-  background-color: #f9f9f9;
+  background-color: var(--task-list-view-bg);
   max-height: 70vh; /* Example max height */
   overflow-y: auto; /* Scroll if content overflows */
 }
@@ -167,9 +270,9 @@
 .gantt-chart-view {
   /* Styles for the Gantt chart container if needed */
   padding: 10px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color);
   border-radius: 4px;
-  background-color: #f9f9f9;
+  background-color: var(--gantt-chart-view-bg);
   /* Gantt chart itself will handle internal scrolling if needed */
 }
 
@@ -180,9 +283,10 @@
 }
 
 .task-list-container h2 {
-  border-bottom: 2px solid #eee;
+  border-bottom: 2px solid var(--section-border-color);
   padding-bottom: 10px;
   margin-bottom: 15px;
+  color: var(--text-color); /* Ensure h2 text color also uses variable */
 }
 
 /* TaskItem styling is mostly inline in TaskItem.js for dynamic indentation,

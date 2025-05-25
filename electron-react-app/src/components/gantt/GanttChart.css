@@ -5,7 +5,7 @@
   width: 100%;
   overflow-x: auto; /* Allows horizontal scrolling if content overflows */
   min-height: 300px; /* Ensure it has some height even if no tasks */
-  border: 1px solid #ddd;
+  border: 1px solid var(--tab-border-color); /* Use tab-border-color or border-color */
   border-radius: 4px;
   margin-top: 20px;
 }
@@ -13,7 +13,7 @@
 /* Frappe Gantt specific overrides if needed */
 /* For example, to change the default font or colors */
 .gantt .grid-header, .gantt .grid-row {
-  fill: #f5f5f5; /* Light grey background for grid lines area */
+  fill: var(--gantt-grid-bg); /* Light grey background for grid lines area */
 }
 
 .gantt .bar-wrapper.milestone-task .bar {
@@ -34,24 +34,24 @@
 }
 /* Ensure critical task label is readable if needed, though Frappe Gantt handles labels separately */
 .gantt .bar-label.critical-task {
-  fill: white !important; /* Example if default label color clashes */
+  fill: var(--button-text-color) !important; /* Was white, ensure contrast */
 }
 
 /* Custom popup styling */
 .gantt-popup {
-  background-color: white;
-  border: 1px solid #ccc;
+  background-color: var(--main-background);
+  border: 1px solid var(--input-border-color);
   border-radius: 4px;
   padding: 10px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px var(--header-shadow-color); /* Or --modal-shadow-color */
   font-family: sans-serif;
   font-size: 12px;
-  color: #333;
+  color: var(--text-color);
 }
 .gantt-popup h5 {
   margin: 0 0 5px 0;
   font-size: 14px;
-  color: #222;
+  color: var(--text-color); /* Was #222, use general text color */
 }
 .gantt-popup p {
   margin: 3px 0;

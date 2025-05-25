@@ -4,7 +4,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--modal-overlay-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -12,10 +12,11 @@
 }
 
 .modal-content {
-  background-color: white;
+  background-color: var(--main-background);
+  color: var(--text-color); /* Ensure text color for modal content */
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--modal-shadow-color);
   min-width: 300px;
   max-width: 600px;
   width: 90%; /* Responsive width */
@@ -26,7 +27,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--section-border-color);
   padding-bottom: 10px;
   margin-bottom: 15px;
 }
@@ -34,6 +35,7 @@
 .modal-header h2 {
   margin: 0;
   font-size: 1.5em;
+  color: var(--text-color); /* Ensure header text color */
 }
 
 .modal-close-button {
@@ -41,11 +43,11 @@
   border: none;
   font-size: 1.8em;
   cursor: pointer;
-  color: #888;
+  color: var(--icon-color);
 }
 
 .modal-close-button:hover {
-  color: #333;
+  color: var(--icon-hover-color);
 }
 
 .modal-body {
@@ -58,6 +60,7 @@
   display: block;
   margin-bottom: 8px;
   font-weight: bold;
+  color: var(--text-color); /* Ensure label color */
 }
 
 .modal-form input[type="text"],
@@ -67,9 +70,11 @@
   width: calc(100% - 20px); /* Full width minus padding */
   padding: 10px;
   margin-bottom: 15px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border-color);
   border-radius: 4px;
   box-sizing: border-box;
+  background-color: var(--main-background); /* Input background */
+  color: var(--text-color); /* Input text color */
 }
 
 .modal-form textarea {
@@ -92,20 +97,20 @@
 }
 
 .modal-form .form-actions button.primary {
-  background-color: #007bff;
-  color: white;
+  background-color: var(--button-json-export-bg); /* Was #007bff (primary blue) */
+  color: var(--button-text-color);
 }
 
 .modal-form .form-actions button.primary:hover {
-  background-color: #0056b3;
+  background-color: var(--button-json-export-hover-bg); /* Was #0056b3 */
 }
 
 .modal-form .form-actions button.secondary {
-  background-color: #6c757d;
-  color: white;
+  background-color: var(--button-secondary-bg); /* Was #6c757d */
+  color: var(--button-text-color);
 }
 .modal-form .form-actions button.secondary:hover {
-  background-color: #545b62;
+  background-color: var(--button-secondary-hover-bg); /* Was #545b62 */
 }
 
 /* Styles for dependency items in TaskForm */
@@ -115,17 +120,20 @@
   gap: 10px;
   margin-bottom: 10px;
   padding: 10px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--border-color); /* Was #e0e0e0 */
   border-radius: 4px;
+  background-color: var(--app-background); /* Slightly different from modal main for visual separation */
 }
 
 .dependency-item select,
 .dependency-item input.lag-input {
   flex-grow: 1;
   padding: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border-color); /* Was #ccc */
   border-radius: 4px;
   box-sizing: border-box;
+  background-color: var(--main-background);
+  color: var(--text-color);
 }
 
 .dependency-item input.lag-input {
@@ -142,33 +150,33 @@
 }
 
 .dependency-item .remove-dependency-btn {
-  background-color: #ff6b6b; /* Light red */
-  color: white;
+  background-color: var(--button-danger-bg); /* Was #ff6b6b (Light red) */
+  color: var(--button-text-color);
 }
 .dependency-item .remove-dependency-btn:hover {
-  background-color: #e05252;
+  background-color: var(--button-danger-hover-bg); /* Was #e05252 */
 }
 
 .add-dependency-btn {
-  background-color: #4CAF50; /* Green */
-  color: white;
+  background-color: var(--button-primary-bg); /* Was #4CAF50 (Green) */
+  color: var(--button-text-color);
   margin-top: 10px; /* Space above the add button */
   display: block; /* Make it full width or inline-block as preferred */
 }
 .add-dependency-btn:hover {
-  background-color: #45a049;
+  background-color: var(--button-primary-hover-bg); /* Was #45a049 */
 }
 
 /* Styles for Custom Fields section in TaskForm */
 .custom-fields-form-section {
   margin-top: 20px;
   padding-top: 15px;
-  border-top: 1px solid #eee;
+  border-top: 1px solid var(--section-border-color); /* Was #eee */
 }
 
 .custom-fields-form-section h4 {
   margin-bottom: 15px;
-  color: #333;
+  color: var(--text-color); /* Was #333 */
 }
 
 .form-field-group {
@@ -179,7 +187,7 @@
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  color: #555;
+  color: var(--text-color); /* Was #555 */
 }
 
 .form-field-group input[type="text"],
@@ -189,9 +197,11 @@
 .form-field-group select {
   width: calc(100% - 22px); /* Adjusted for padding/border */
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--input-border-color); /* Was #ccc */
   border-radius: 4px;
   box-sizing: border-box;
+  background-color: var(--main-background);
+  color: var(--text-color);
 }
 
 .form-field-group input[type="checkbox"].custom-field-checkbox {
