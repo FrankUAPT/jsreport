@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types'; // Removed
 import TaskItem from './TaskItem';
 import { DragDropContext, Droppable } from '@hello-pangea/dnd';
 import './TaskList.css'; // Create and import CSS for TaskList controls
@@ -120,8 +120,8 @@ const TaskList = ({
   );
 };
 
-TaskList.propTypes = {
-  tasks: PropTypes.array.isRequired
-};
+// TaskList.propTypes = {
+//   tasks: PropTypes.array.isRequired
+// }; // Removed
 
 export default TaskList;
