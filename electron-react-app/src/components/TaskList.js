@@ -50,6 +50,8 @@ const TaskList = ({
     setSortOrder('asc');
   };
 
+  // Original JSX commented out for diagnosis
+  /*
   return (
     <DragDropContext onDragEnd={handleDragEnd}>
       <div className="task-list-container">
@@ -116,6 +118,15 @@ const TaskList = ({
             )}
           </Droppable>
         )}
+    </div>
+  );
+  */
+
+  // Simplified JSX for diagnosis
+  return (
+    <div className="task-list-container">
+      <h2>Task List (Simplified for Diagnosis)</h2>
+      <p>If you see this, the basic component structure is fine.</p>
     </div>
   );
 };
