@@ -125,10 +125,52 @@ TaskList.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
-      parentId: PropTypes.string,
-      // Add other relevant prop types from Task model if needed for TaskList itself
+      parentId: PropTypes.string, // Can be null or undefined
+      startDate: PropTypes.string, // Assuming ISO string
+      endDate: PropTypes.string, // Assuming ISO string
+      assigneeId: PropTypes.string,
+      status: PropTypes.string,
+      progress: PropTypes.number,
+      dependencies: PropTypes.array, // Could be more specific if structure is fixed
+      childrenIds: PropTypes.arrayOf(PropTypes.string),
+      customFields: PropTypes.object,
     })
   ).isRequired,
+  users: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      // email: PropTypes.string, // Optional, if needed by TaskList directly
+    })
+  ).isRequired,
+  usersById: PropTypes.objectOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+    })
+  ).isRequired,
+  customFieldDefinitions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      type: PropTypes.string.isRequired,
+      // options: PropTypes.array, // If type is 'dropdown'
+    })
+  ).isRequired,
+  filterAssigneeId: PropTypes.string.isRequired,
+  setFilterAssigneeId: PropTypes.func.isRequired,
+  filterStatus: PropTypes.string.isRequired,
+  setFilterStatus: PropTypes.func.isRequired,
+  sortKey: PropTypes.string.isRequired,
+  setSortKey: PropTypes.func.isRequired,
+  sortOrder: PropTypes.string.isRequired,
+  setSortOrder: PropTypes.func.isRequired,
+  searchQuery: PropTypes.string.isRequired,
+  setSearchQuery: PropTypes.func.isRequired,
+  onEditTask: PropTypes.func.isRequired,
+  onDeleteTask: PropTypes.func.isRequired,
+  onAddSubTask: PropTypes.func.isRequired,
+  onTaskReorder: PropTypes.func.isRequired,
 };
 
 export default TaskList;
