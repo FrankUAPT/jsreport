@@ -65,7 +65,8 @@ const TaskItem = ({ task, index, allTasks, usersById, customFieldDefinitions, le
   const deleteButtonStyle = { ...buttonStyle, backgroundColor: '#ffdddd' };
 
   // Children are determined by task.childrenIds and fetched from allTasks
-  const children = task.childrenIds
+  // This is the second declaration of 'children', targeted for rename.
+  const childTasks = task.childrenIds
     ? task.childrenIds.map(childId => allTasks.find(t => t.id === childId)).filter(Boolean)
     : [];
 
@@ -130,7 +131,7 @@ const TaskItem = ({ task, index, allTasks, usersById, customFieldDefinitions, le
             )}
 
             {/* Children Tasks - Nested Droppable */}
-            {isExpanded && children.length > 0 && (
+            {isExpanded && childTasks.length > 0 && (
               <Droppable droppableId={task.id} type="TASK">
                 {(provided, snapshot) => (
                   <div
@@ -144,7 +145,7 @@ const TaskItem = ({ task, index, allTasks, usersById, customFieldDefinitions, le
                       paddingBottom: '5px'
                     }}
                   >
-                    {children.map((childTask, childIndex) => (
+                    {childTasks.map((childTask, childIndex) => (
                       <TaskItem
                         key={childTask.id}
                         task={childTask}
