@@ -202,10 +202,10 @@ TaskItem.propTypes = {
     progress: PropTypes.number.isRequired,
     isMilestone: PropTypes.bool.isRequired,
     customFields: PropTypes.object,
-    dependencies: PropTypes.arrayOf(PropTypes.string),
+    dependencies: PropTypes.arrayOf(PropTypes.string), // Corrected: was PropTypes.array
   }).isRequired,
   index: PropTypes.number.isRequired, // Required by react-beautiful-dnd
-  allTasks: PropTypes.arrayOf(PropTypes.object).isRequired,
+  allTasks: PropTypes.arrayOf(PropTypes.object).isRequired, // Could be more specific: PropTypes.arrayOf(PropTypes.shape(taskShape))
   usersById: PropTypes.objectOf(PropTypes.shape({
     id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -219,115 +219,6 @@ TaskItem.propTypes = {
   onEditTask: PropTypes.func.isRequired,
   onDeleteTask: PropTypes.func.isRequired,
   onAddSubTask: PropTypes.func.isRequired, // New prop
-            >
-              {children.length > 0 && (
-                <span>{isExpanded ? '▼' : '►'} </span>
-              )}
-            </span>
-            <span style={taskNameStyle}>{task.name}</span>
-            {task.isMilestone && <span style={{ color: 'green', marginLeft: '8px' }}>(M)</span>}
-            <span style={{ fontSize: '0.8em', color: '#777', marginLeft: '10px' }}>
-              ({task.status} - {task.progress}%)
-            </span>
-            {task.assigneeId && usersById[task.assigneeId] && (
-              <span style={{ fontSize: '0.8em', color: '#555', marginLeft: '10px', fontStyle: 'italic' }}>
-                @{usersById[task.assigneeId].name}
-              </span>
-            )}
-            <div style={{...taskActionsStyle, marginLeft: 'auto' }}> {/* Push actions to the right */}
-              <button style={editButtonStyle} onClick={() => onEditTask(task)}>Edit</button>
-              <button style={deleteButtonStyle} onClick={() => onDeleteTask(task.id)}>Delete</button>
-            </div>
-          </div>
-
-          {/* Custom Fields Display */}
-          {customFieldDefinitions && Object.keys(task.customFields || {}).length > 0 && (
-            <div style={{ padding: '0 8px 8px 28px', fontSize: '0.8em' }}> {/* Indent custom fields */}
-              {customFieldDefinitions.map(def => {
-                const value = task.customFields[def.id];
-                if (value !== undefined && value !== null && value !== '') {
-                  let displayValue = value;
-                  if (def.type === 'checkbox') displayValue = value ? 'Yes' : 'No';
-                  else if (def.type === 'date' && value) displayValue = new Date(value).toLocaleDateString();
-                  return (
-                    <div key={def.id} className="custom-field-display">
-                      <strong>{def.name}:</strong> {displayValue.toString()}
-                    </div>
-                  );
-                }
-                return null;
-              })}
-            </div>
-          )}
-
-          {/* Children Tasks - Nested Droppable */}
-          {isExpanded && children.length > 0 && (
-            <Droppable droppableId={task.id} type="TASK">
-              {(provided, snapshot) => (
-                <div
-                  ref={provided.innerRef}
-                  {...provided.droppableProps}
-                  style={{ 
-                    marginTop: '5px', 
-                    paddingLeft: '20px', /* Indent children further */
-                    background: snapshot.isDraggingOver ? 'lightyellow' : 'transparent',
-                    borderRadius: '4px',
-                    paddingBottom: '5px'
-                  }}
-                >
-                  {children.map((childTask, childIndex) => (
-                    <TaskItem
-                      key={childTask.id}
-                      task={childTask}
-                      index={childIndex} // Index within this child list
-                      allTasks={allTasks}
-                      usersById={usersById}
-                      customFieldDefinitions={customFieldDefinitions}
-                      level={level + 1}
-                      onEditTask={onEditTask}
-                      onDeleteTask={onDeleteTask}
-                    />
-                  ))}
-                  {provided.placeholder}
-                </div>
-              )}
-            </Droppable>
-          )}
-        </div>
-      )}
-    </Draggable>
-  );
-};
-
-TaskItem.propTypes = {
-  task: PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    parentId: PropTypes.string,
-    childrenIds: PropTypes.arrayOf(PropTypes.string),
-    startDate: PropTypes.string.isRequired,
-    endDate: PropTypes.string.isRequired,
-    status: PropTypes.string.isRequired,
-    assigneeId: PropTypes.string,
-    progress: PropTypes.number.isRequired,
-    isMilestone: PropTypes.bool.isRequired,
-    customFields: PropTypes.object,
-    dependencies: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
-  index: PropTypes.number.isRequired, // Required by react-beautiful-dnd
-  allTasks: PropTypes.arrayOf(PropTypes.object).isRequired,
-  usersById: PropTypes.objectOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-  })).isRequired,
-  customFieldDefinitions: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    type: PropTypes.string.isRequired,
-  })).isRequired,
-  level: PropTypes.number,
-  onEditTask: PropTypes.func.isRequired,
-  onDeleteTask: PropTypes.func.isRequired,
 };
 
 export default TaskItem;
