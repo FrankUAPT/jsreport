@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron') // Added ipcMain
 const Store = require('electron-store'); // Added electron-store
 
-Store.initRenderer(); // Initialize for renderer process access
+// Store.initRenderer(); // Initialize for renderer process access -- Line Removed
 
 let store; // Declare store variable
 
