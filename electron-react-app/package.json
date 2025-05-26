@@ -20,6 +20,7 @@
     "@babel/preset-env": "^7.27.2",
     "@babel/preset-react": "^7.27.1",
     "babel-loader": "^10.0.0",
+    "css-loader": "^6.7.1",
     "electron": "^36.3.1",
     "html-webpack-plugin": "^5.6.3",
     "style-loader": "^3.3.3",
